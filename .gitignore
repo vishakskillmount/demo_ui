@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build output
+dist/
+build/
+.next/
+out/
+.cache/
+.parcel-cache/
+.turbo/
+
+# env and secrets
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# tooling
+.claude/
+coverage/
+*.tsbuildinfo

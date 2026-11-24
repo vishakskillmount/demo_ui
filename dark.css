@@ -1,0 +1,74 @@
+/* =====================================================================
+   Skillmount dark: palette from the logo (cyan #3d7bff to blue #3d7bff on deep navy).
+   Apple-style materials: translucent glass, blur + saturation, thin inner highlights.
+   Loaded after theme.css; the layout is unchanged.
+   ===================================================================== */
+html.dark {
+  --bg: #0b0c0f; --surface: rgba(255,255,255,.045); --ink: #f2f3f5; --ink-2: #a8abb5; --ink-3: #70747f;
+  --line: rgba(255,255,255,.08); --line-2: rgba(255,255,255,.05); --tile: rgba(255,255,255,.06);
+  --accent: #3d7bff; --accent-2: #5b93ff; --accent-soft: rgba(61,123,255,.16); --accent-ink: #9bbcff;
+  --sun: #3d7bff; --sun-soft: rgba(61,123,255,.16);
+  --grad: #3d7bff; --glow: 0 6px 16px -8px rgba(61,123,255,.6);
+  --shadow-md: 0 24px 50px -24px rgba(0,0,0,.85); --shadow-lg: 0 40px 80px -30px rgba(0,0,0,.9);
+}
+html.dark body { background: var(--bg); }
+html.dark body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(55% 40% at 8% 0%, rgba(61,123,255,.10), transparent 65%), #0b0c0f; }
+
+
+/* materials */
+html.dark .q-card, html.dark .card, html.dark .ccard, html.dark .rail-pill, html.dark .search input, html.dark .cat, html.dark .rail-me { backdrop-filter: blur(26px) saturate(160%); -webkit-backdrop-filter: blur(26px) saturate(160%); border: 1px solid var(--line); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+html.dark .search input { color: var(--ink); } html.dark .search input::placeholder { color: var(--ink-3); } html.dark .search svg { color: var(--ink-3); }
+html.dark .modal, html.dark .notif, html.dark .pop, html.dark .toast, html.dark .dev { background: rgba(24,25,30,.94); backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.08); color: var(--ink); }
+html.dark .scrim { background: rgba(0,0,0,.6); }
+
+/* logo */
+.brand { width: 64px; height: 64px; }
+.brand-mark { position: relative; width: 60px; height: 60px; border-radius: 20px; background: none !important; overflow: hidden; display: block; }
+.brand-mark img { position: absolute; left: -5px; top: -3px; height: 66px; width: auto; max-width: none;  }
+.top-logo { display: flex; align-items: center; flex: none; margin-right: 6px; } .top-logo img { height: 40px; width: auto; display: block; }
+
+/* primary surfaces use the logo gradient with white text */
+html.dark .btn-dark, html.dark .btn.primary, html.dark .q-play, html.dark .nav a[aria-current="page"], html.dark .cat.on, html.dark .q-day.sel b, html.dark .tag, html.dark .mini.dark, html.dark .node.open, html.dark .seg button[aria-pressed="true"], html.dark .seg button[aria-selected="true"], html.dark .date-tile.now, html.dark .day[aria-pressed="true"], html.dark .q-prog-tile.dark, html.dark .big-play span {
+  background: var(--grad); color: #fff; border-color: transparent; box-shadow: var(--glow), inset 0 1px 0 rgba(255,255,255,.28); }
+html.dark .btn-dark:hover, html.dark .btn.primary:hover { background: #5b93ff; }
+html.dark .nav a[aria-current="page"] svg { color: #fff; } html.dark .q-play svg, html.dark .big-play svg { fill: #fff; }
+html.dark .btn.light { background: var(--grad); color: #fff; }
+html.dark .q-prog-tile.dark .q-pt-ico { background: rgba(255,255,255,.18); color: #fff; } html.dark .q-prog-tile.dark small { opacity: .8; }
+html.dark .q-big:hover { background: var(--grad); color: #fff; }
+html.dark .bar > i { background: var(--grad); } html.dark .bar.good > i { background: #34d399; }
+html.dark .q-wave i { background: rgba(255,255,255,.18); } html.dark .q-wave i.on { background: var(--grad); }
+html.dark .q-day b { background: rgba(255,255,255,.07); } html.dark .q-day:hover b { background: rgba(255,255,255,.13); }
+html.dark .q-day.today b { box-shadow: inset 0 0 0 2px var(--accent); } html.dark .q-day i { background: var(--accent); }
+html.dark .nav a:hover, html.dark .rail-btn:hover, html.dark .pill-btn:hover, html.dark .round-btn:hover { background: rgba(255,255,255,.1); }
+html.dark .nav .badge, html.dark .rb-n { background: var(--grad); color: #fff; }
+html.dark #miniStreak svg { color: #fbbf24; fill: #fbbf24; } html.dark .rail-btn .dot { background: var(--accent); border-color: #141519; }
+html.dark .rail-me .avatar, html.dark .avatar { background: var(--grad); color: #fff; }
+html.dark .stars { color: #fbbf24; } html.dark .q-chip-float i { background: var(--accent); }
+html.dark .q-ev-ico, html.dark .q-pt-ico { background: rgba(255,255,255,.07); }
+html.dark .q-task, html.dark .q-now, html.dark .q-tile, html.dark .q-faces, html.dark .q-tile-ico, html.dark .log { background: rgba(255,255,255,.055); }
+html.dark .q-tile:hover { background: rgba(255,255,255,.1); } html.dark .q-faces img { border-color: #1b1c22; }
+html.dark .tag.o { background: rgba(124,92,255,.25); color: #c4b5fd; } html.dark .tag.g { background: rgba(52,211,153,.2); color: #6ee7b7; }
+html.dark .mini { background: rgba(255,255,255,.08); color: var(--ink-2); }
+html.dark .chip { background: rgba(255,255,255,.08); } html.dark .chip.accent { background: var(--accent-soft); color: #9bbcff; }
+html.dark .pl.cur { background: rgba(61,123,255,.12); } html.dark .mod:hover, html.dark .pl:hover { background: rgba(255,255,255,.06); }
+html.dark .trow.me { background: rgba(61,123,255,.12); } html.dark .trow.me .rk { color: var(--accent); }
+html.dark .heat i { background: rgba(255,255,255,.06); } html.dark .heat i[data-l="1"] { background: #1b2a4d; } html.dark .heat i[data-l="2"] { background: #2a4a8f; } html.dark .heat i[data-l="3"] { background: #3b68d0; } html.dark .heat i[data-l="4"] { background: #3d7bff; }
+html.dark .toggle[aria-checked="true"] { background: var(--accent); }
+html.dark .ccard:hover { background: rgba(255,255,255,.07); }
+html.dark .opt[aria-checked="true"] { border-color: var(--accent); background: rgba(61,123,255,.1); }
+html.dark .pop button:hover { background: rgba(255,255,255,.08); } html.dark .toast svg { color: #34d399; }
+html.dark .d-hero { border: 1px solid rgba(255,255,255,.14); }
+html.dark ::selection { background: rgba(61,123,255,.35); }
+/* tighter tracking at large sizes, as in Apple's optical sizing */
+.q-h1, .h1 { letter-spacing: -.03em; } .q-h2 { letter-spacing: -.022em; }
+@media (max-width: 1100px) { .top-logo img { height: 34px; } }
+@media (max-width: 760px) { .top-logo img { height: 30px; } .search { flex: 1; width: auto; } }
+
+/* light mode: make the white logo wordmark readable on beige */
+html:not(.dark) .top-logo img { filter: invert(1) hue-rotate(180deg); }
+html:not(.dark) .brand-mark img { filter: drop-shadow(0 6px 12px rgba(61,123,255,.25)); }
+
+/* dark fixes: mobile tab bar + segmented controls */
+html.dark .tabbar { background: rgba(24,25,30,.88); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border: 1px solid rgba(255,255,255,.12); }
+html.dark .tabbar a { color: var(--ink-3); } html.dark .tabbar a[aria-current="page"] { background: var(--grad); color: #fff; box-shadow: var(--glow); }
+html.dark .seg, html.dark .dev .seg { background: rgba(255,255,255,.07); } html.dark .seg button { color: var(--ink-2); }

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta name="color-scheme" content="dark" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skillmount Learn — Student dashboard (design demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="dark.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="side" aria-label="Primary">
+      <div class="brand" title="Skillmount Learn"><div class="brand-mark"><img src="assets/logo-white.png" alt="Skillmount" /></div><div class="brand-name">Skillmount<small>Learn</small></div></div>
+      <nav class="nav rail-pill" id="nav"></nav>
+      <div class="rail-pill rail-2"><button class="press rail-btn" id="bellBtn" data-act="notif" aria-label="Notifications"></button><button class="press rail-btn" data-act="streak" id="miniStreak" aria-label="Streak"></button><button class="press rail-btn" data-nav="#/profile" aria-label="Settings" id="setBtn"></button></div>
+      <button class="rail-me press" data-nav="#/profile" id="meBtn" aria-label="Profile"></button>
+      <button class="collapse-btn" data-act="collapse" hidden><span id="colIcon"></span></button>
+    </aside>
+    <div class="main">
+      <header class="top">
+        <div class="crumb" id="crumb" hidden></div>
+        <a class="top-logo" href="#/dashboard" aria-label="Skillmount Learn"><img src="assets/logo-white.png" alt="Skillmount" /></a>
+        <label class="search"><span class="sr">Search courses</span><input id="q" type="search" placeholder="Search anything…" autocomplete="off" /><span id="searchIco"></span></label>
+        <div class="cats" id="cats" role="group" aria-label="Quick filters"></div>
+        <div class="theme" id="theme" role="group" aria-label="Theme"></div>
+        <button class="btn-dark press" data-act="join">Join live class</button>
+      </header>
+      <main class="view" id="view" tabindex="-1"></main>
+    </div>
+  </div>
+  <nav class="tabbar" id="tabbar" aria-label="Primary mobile"></nav>
+  <div id="layer"></div>
+  <div class="dev" id="dev"><span>Data</span><div class="seg" role="group" aria-label="Data mode"></div></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tokens. Cool paper and ink, one evergreen for actions. Course colours only identify a course. */
+:root {
+  color-scheme: light;
+  --bg: #f4f7f6; --surface: #ffffff; --sunken: #ecf1ef; --ink: #111a17; --muted: #55625d; --line: #e0e7e4; --line-strong: #cbd5d1;
+  --primary: #0f6b55; --primary-hover: #0b5744; --primary-ink: #ffffff; --tint: #e2f2ec; --tint-ink: #0b5744;
+  --warn: #8a5400; --warn-tint: #fdf0d8; --bad: #b3362b; --bad-tint: #fbe9e7; --streak: #d98a0b;
+}
+.dark {
+  color-scheme: dark;
+  --bg: #0d1210; --surface: #151b19; --sunken: #1c2421; --ink: #e8efec; --muted: #9baaa4; --line: #25302c; --line-strong: #35423d;
+  --primary: #4cc7a3; --primary-hover: #66d4b3; --primary-ink: #06231b; --tint: #14332a; --tint-ink: #8be0c5;
+  --warn: #f0bd6a; --warn-tint: #33260f; --bad: #f2968c; --bad-tint: #381a17; --streak: #f0a92e;
+}
+@theme inline {
+  --color-bg: var(--bg); --color-surface: var(--surface); --color-sunken: var(--sunken); --color-ink: var(--ink); --color-muted: var(--muted);
+  --color-line: var(--line); --color-line-strong: var(--line-strong); --color-primary: var(--primary); --color-primary-hover: var(--primary-hover);
+  --color-primary-ink: var(--primary-ink); --color-tint: var(--tint); --color-tint-ink: var(--tint-ink); --color-warn: var(--warn); --color-warn-tint: var(--warn-tint);
+  --color-bad: var(--bad); --color-bad-tint: var(--bad-tint); --color-streak: var(--streak);
+  --font-sans: "Schibsted Grotesk Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-bg text-ink font-sans text-[15px] leading-normal antialiased; font-variant-numeric: tabular-nums; }
+  h1, h2, h3 { text-wrap: balance; }
+  button { cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  button:disabled { cursor: not-allowed; }
+  :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  main:focus { outline: none; }
+  ::selection { background: var(--tint); color: var(--tint-ink); }
+}
+
+/* Per-course identity colour, with a dark-mode partner. */
+.hue { --c: var(--cl); }
+.dark .hue { --c: var(--cd); }
+
+/* Press feedback on every pressable; hover never relies on it. */
+@utility press {
+  transition: transform 150ms var(--ease-out-strong), background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 200ms var(--ease-out-strong);
+  &:active:not(:disabled) { transform: scale(0.97); }
+}
+
+/* Popovers and menus grow from their trigger. Dialogs stay centred. */
+.pop { transform-origin: var(--radix-popover-content-transform-origin, var(--radix-dropdown-menu-content-transform-origin, var(--radix-tooltip-content-transform-origin, top))); animation: pop-in 180ms var(--ease-out-strong); }
+.pop[data-state="closed"] { animation: pop-out 120ms var(--ease-out-strong) forwards; }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.96); } }
+@keyframes pop-out { to { opacity: 0; transform: scale(0.98); } }
+.overlay { animation: fade-in 200ms ease; }
+.overlay[data-state="closed"] { animation: fade-out 150ms ease forwards; }
+.dialog { animation: dialog-in 240ms var(--ease-out-strong); }
+.dialog[data-state="closed"] { animation: dialog-out 150ms var(--ease-out-strong) forwards; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes dialog-in { from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); } }
+@keyframes dialog-out { to { opacity: 0; transform: translate(-50%, -50%) scale(0.97); } }
+
+/* One entrance: the day ribbon draws itself, once, when the dashboard opens. Page changes only cross-fade. */
+.page-in { animation: fade-in 220ms ease; }
+.ribbon-block { transform-origin: left center; animation: block-in 520ms var(--ease-out-strong) both; animation-delay: calc(var(--i) * 55ms + 80ms); }
+@keyframes block-in { from { opacity: 0; transform: scaleX(0.6); } }
+.fill { transform-origin: left; transition: transform 500ms var(--ease-out-strong); animation: fill-x 700ms var(--ease-out-strong) 120ms backwards; }
+@keyframes fill-x { from { transform: scaleX(0); } }
+.rise-bar { transform-origin: bottom; animation: rise-y 600ms var(--ease-out-strong) backwards; animation-delay: calc(var(--i) * 35ms + 100ms); }
+@keyframes rise-y { from { transform: scaleY(0); } }
+.toast { transition: opacity 240ms var(--ease-out-strong), transform 340ms var(--ease-drawer); @starting-style { opacity: 0; transform: translateY(12px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pop, .dialog { animation-name: fade-in; }
+  .pop[data-state="closed"], .dialog[data-state="closed"] { animation-name: fade-out; }
+  .ribbon-block, .fill, .rise-bar { animation: none; }
+  .fill { transition: none; }
+  .toast { transition: opacity 200ms ease; @starting-style { transform: none; } }
+  .press:active:not(:disabled) { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) { .glass { background: var(--surface) !important; backdrop-filter: none !important; } }

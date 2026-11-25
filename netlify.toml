@@ -1,5 +1,5 @@
-# Netlify build settings for this repo: build and publish the React app in lms-black-theme/.
+# Netlify build settings on the "studio" branch: build and publish the app in lms-studio/.
 [build]
-  base = "lms-black-theme/"
+  base = "lms-studio/"
   command = "npm run build"
   publish = "dist/"

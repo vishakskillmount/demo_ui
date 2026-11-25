@@ -13,8 +13,6 @@ out/
 .turbo/
 
 # env and secrets
-.env
-.env.*
 !.env.example
 
 # logs
@@ -25,7 +23,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # editor / OS
-.vscode/
 .idea/
 .DS_Store
 Thumbs.db
@@ -36,3 +33,4 @@ desktop.ini
 .claude/
 coverage/
 *.tsbuildinfo
+config.bat

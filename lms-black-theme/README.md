@@ -34,6 +34,6 @@ Lesson videos are YouTube placeholders and avatars come from pravatar.cc, so bot
 | --- | --- |
 | Base directory | `lms-black-theme` |
 | Build command | `npm run build` |
-| Publish directory | `lms-black-theme/dist` |
+| Publish directory | `dist`, relative to the base directory |
 
-Node 22 is set in `.nvmrc`.
+`netlify.toml` sets the build command and publish directory, so only the base directory has to be entered in Netlify. Node 22 is set in `.nvmrc`.

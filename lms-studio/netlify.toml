@@ -1,0 +1,5 @@
+# Netlify settings for this app. Netlify reads this file when the site uses "lms-studio" as its folder.
+[build]
+  base = "lms-studio/"
+  command = "npm run build"
+  publish = "dist/"
